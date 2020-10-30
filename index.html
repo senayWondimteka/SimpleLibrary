@@ -2,17 +2,47 @@
 <html>
     <head>
         <title>Simple Library</title>
+        <link rel='stylesheet' href='styles.css' >
         
     </head>
     <body>
-
-        <div id='addButtons'>
-            <button id = 'addButton' value='Add Book'>Add Book</button>
+    
+        <div class='card'>
+            <button value='Add Book' onclick="showAddForm()">Add Book</button>
         </div>
+  
+   
+        <div id='addBook'>
+            <div id='popUpAddBook'>
+       
+            <form action="#" id="form" method='POST' name='form'>
+                <h2>Add Book.</h2>
+                <hr>
+                <input id='title' name='title' placeholder="Title" type='text'>
+                <input id='author' name='author' placeholder="Author" type='text'>
+                <input id='publishedYear' name="publishedYear" placeholder='Published Year' type='number'>
+                
+                <input id='read' name='read' placeholder="Have you read this book?" type='text'>
+                <!--
+                <input type='radio' id='read' name='read' value='Read'>
+                <label for='read'>I have read this book.</label>
+
+
+                <input type='radio' id='notRead' name='notRead' value='not read.' >
+                <label for="notRead">I have not read this book.</label>
+
+                -->
+
+                <button id='addBookButton'>Add </button>
+            </form>
+            </div>
+        </div>
+        
         <div id="container">
-
         </div>
+        
         <script src='app.js'>
         </script>
+    
     </body>
 </html>

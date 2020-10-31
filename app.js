@@ -127,6 +127,10 @@ function displayBooks()
         removeBook.textContent = "Remove Book.";
         //removeBook.setAttribute('onclick', 'deleteBook(' + `${row.dataset.indexNumber}` + ');');
 
+        let status = document.createAttribute('button');
+        status.id = 'status';
+        status.textContent = ( myLibrary[i].read === true ? 'Read' : 'Not Read');
+
         row.appendChild(title);
         row.appendChild(author);
         row.appendChild(year);

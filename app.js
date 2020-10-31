@@ -5,7 +5,31 @@ button.addEventListener('click', creatForm);
 
 */
 
+let Book = function Book(title, author, publishedYear, read) {
+    this.title = title, 
+    this.author = author, 
+    this.publishedYear = publishedYear, 
+    this.read = function() { 
+        if(!this.read) {
+             return "Sorry, I have not read" + '"' + `${this.title}` + '"';
+        } else {
+            return "Thank You for your offer! I have read " + '"' + `${this.title}` +'."';
+        }
+    }
+}
+
+
 let myLibrary = [ ];
+
+let bookOne = new Book("Atomic Habits", "James Clear", 2016, true);
+let bookTwo = new Book("The 7 Habits of Highly Effective People", "Steve Core", 2016, true);
+
+
+
+myLibrary.push(bookOne);
+myLibrary.push(bookTwo);
+
+displayBooks();
 
 
 function saveBookDetails() {
@@ -58,20 +82,6 @@ function hideAddForm(){
 }
 
 
-
-let Book = function Book(title, author, publishedYear, read) {
-    this.title = title, 
-    this.author = author, 
-    this.publishedYear = publishedYear, 
-    this.read = function() { 
-        if(!this.read) {
-             return "Sorry, I have not read" + '"' + `${this.title}` + '"';
-        } else {
-            return "Thank You for your offer! I have read " + '"' + `${this.title}` +'."';
-        }
-    }
-}
-
 function addBookToLibrary(Book) {
     let notInTheLibrary = false;
 
@@ -101,6 +111,7 @@ function displayBooks()
    for(let i = 0; i < myLibrary.length; i++) {
         let row = document.createElement('div');
         row.classList.add('card');
+        row.dataset.indexNumber = i;
         let title = document.createElement('h4');
         title.classList.add('title');
         title.textContent = myLibrary[i].title;
@@ -114,9 +125,7 @@ function displayBooks()
         let removeBook = document.createElement('button');
         removeBook.id = 'removeBook';
         removeBook.textContent = "Remove Book.";
-
-        
-        
+        //removeBook.setAttribute('onclick', 'deleteBook(' + `${row.dataset.indexNumber}` + ');');
 
         row.appendChild(title);
         row.appendChild(author);
@@ -129,12 +138,30 @@ function displayBooks()
 
 }
 
-let bookOne = new Book("Atomic Habits", "James Clear", 2016, true);
-let bookTwo = new Book("The 7 Habits of Highly Effective People", "Steve Core", 2016, true);
+function deleteBook(dataIndex) {
+    console.log(dataIndex);
+    myLibrary.splice(dataIndex);
+    
+    console.log("This is my length:" +myLibrary.length);
+
+    displayBooks();
+    alert("succeffuly deleted");
+}
 
 
+const removeBook = document.querySelectorAll('#removeBook');
 
-myLibrary.push(bookOne);
-myLibrary.push(bookTwo);
+removeBook.forEach((button) => { 
 
-displayBooks();
+    button.addEventListener('click', () => { 
+
+        button.parentNode.parentNode.removeChild(button.parentNode);
+        console.log('This book is removed: ' + button.parentNode.getAttribute('data-index-number'));
+
+        myLibrary.splice(button.parentNode.getAttribute('data-index-number'));
+        alert("Book is Successfully deleted.");
+    });
+
+});
+
+

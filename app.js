@@ -5,14 +5,47 @@ button.addEventListener('click', creatForm);
 
 */
 
+let myLibrary = [ ];
+
+
+function saveBookDetails() {
+
+    if(!check_empty()) {
+        alert("Please fill All Fields!");
+        return ;
+    }
+
+    var title = document.getElementById('title').value;
+    var author = document.getElementById('author').value;
+    var  year = document.getElementById('publishedYear').value;
+    var read = document.getElementById('read');
+    if(read ===' Yes') {
+        read = true;
+    }else {
+        read = false;
+    }
+
+    var newBook = new Book(title, author, year, read);
+
+    myLibrary.push(newBook);
+
+    console.log("Hi, from saveBook Details method.");
+    alert("Book Added Successfully...");
+
+
+}
+
 
 // Validating Empty Field
 function check_empty() {
     if (document.getElementById('title').value == "" || document.getElementById('author').value == "" || document.getElementById('publishedYear').value == "") {
-    alert("Fill All Fields !");
+        return false;
+        //alert("Fill All Fields !");
     } else {
-   document.getElementById('form').submit();
-    alert("Book Added Successfully...");
+   //document.getElementById('form').submit();
+    
+   //alert("Book Added Successfully...");
+        return true;
     }
 }
 //Function To Display Popup
@@ -90,10 +123,11 @@ function displayBooks()
 
 
 }
+
 let bookOne = new Book("Atomic Habits", "James Clear", 2016, true);
 let bookTwo = new Book("The 7 Habits of Highly Effective People", "Steve Core", 2016, true);
 
-let myLibrary = [ ];
+
 
 myLibrary.push(bookOne);
 myLibrary.push(bookTwo);

@@ -111,6 +111,10 @@ function displayBooks()
         let read = document.createElement('button');
         //read.classList.add('read-status');
         read.textContent = myLibrary[i].read();
+        let removeBook = document.createElement('button');
+        removeBook.id = 'removeBook';
+        removeBook.textContent = "Remove Book.";
+
         
         
 
@@ -118,6 +122,7 @@ function displayBooks()
         row.appendChild(author);
         row.appendChild(year);
         row.appendChild(read);
+        row.appendChild(removeBook);
         container.appendChild(row);
     }
 

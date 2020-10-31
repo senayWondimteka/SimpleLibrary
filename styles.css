@@ -27,6 +27,19 @@ body {
     font-size: 18px;
   }
 
+.card button#removeBook {
+    box-shadow: 0 15px 15px 0 rgba(255, 0, 0, 0.2);
+    margin: auto;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: rgb(247, 0, 0);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
   #addBook {
     width:100%;
     height:100%;
